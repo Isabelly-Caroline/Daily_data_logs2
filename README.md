@@ -49,3 +49,62 @@ df = df.withColumn("ano_nascimento", 2026 - col("idade"))  # cria nova coluna
 df.show()
 
 spark.stop()
+```
+
+## 18/03/2026
+
+Hoje foquei nos estudos práticos de PySpark, aplicando junto com a lógica de ETL (extract, transform e load), o que me ajudou a entender melhor como funciona um fluxo de dados na prática.
+
+Trabalhei com leitura de arquivos CSV, junção de dados com join (bem parecido com SQL), criação de colunas calculadas e também agrupamentos com groupBy usando sum e count para gerar algumas métricas.
+
+Também utilizei o Google Colab para rodar o código por partes, o que facilitou bastante o entendimento de cada etapa separadamente, ai adicionei comentários sobre o que cada parte fazia.
+
+Além disso, comecei um desafio prático criando DataFrames manualmente, fazendo joins e aplicando transformações,porém não finalizei ainda, mas ajudou a fixar bem.
+
+No geral, foi um dia bem focado em prática, e sinto que consegui evoluir bem no entendimento do PySpark.
+
+Código ETL:
+
+``` python
+    from pyspark.sql import SparkSession
+from pyspark.sql.functions import sum, count
+print("RODOU O ARQUIVO")
+
+
+
+spark = SparkSession.builder \
+    .appName("Projeto Vendas") \
+    .getOrCreate()
+
+print("INICIANDO...")
+# EXTRACT ler dados
+#manda o Spark abrir um arquivo CSV / fala que a primeira linha tem os nomes das colunas / faz tentar descobrir os tipos / cria os dataframes
+df_vendas = spark.read.csv("data/vendas.csv", header=True, inferSchema=True)
+df_clientes = spark.read.csv("data/clientes.csv", header=True, inferSchema=True)
+df_produtos = spark.read.csv("data/produtos.csv", header=True, inferSchema=True)
+df_vendas.show()
+
+# TRANSFORM
+
+# Join junta as tabelas, tipo sql 
+df = df_vendas.join(df_clientes, "id_cliente") \
+              .join(df_produtos, "id_produto")
+
+# KPI agrupa os dados por categoria/ soma o valor das vendas dentro de cada grupo/ conta quantas vendas existem/ renomeia a coluna
+df_kpi = df.groupBy("categoria").agg(
+    sum("valor").alias("total_vendas"),
+    count("*").alias("quantidade_vendas")
+)
+
+print("MOSTRAR")
+# SELECT * FROM mostra
+df_kpi.show()
+
+# LOAD a parte de salvar/ se já existir arquivo, substitui/ salva no formato padrão parquet/ pelo que entendi salva os dados em uma pasta 
+
+df_kpi.write.mode("overwrite").parquet("output/relatorio_vendas")
+```
+
+
+
+
