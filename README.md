@@ -111,6 +111,15 @@ Hoje pela manhã participei da daily da Pernambucanas. Em seguida, entrei em uma
 
 Após isso, iniciei a atividade que consiste em trabalhar com queries SQL no BigQuery, executando os códigos fornecidos, analisando os erros retornados e realizando os ajustes necessários para que as consultas funcionem corretamente. Durante esse processo, também comecei a me familiarizar com o ambiente do BigQuery e a entender melhor como os erros se comportam e como corrigi-los na prática.
 
+## 23/03/2026
+
+Hoje Iniciei a demanda que consiste em  
+Transformar a view que ja existe, em um processo dataform que vai salvar numa tabela. Entrei em reunião com os meninos pra eles explicarem melhor sobre essa nova demanda.
+
+Depois disso, tivemos que fazer alguns ajustes ali de permissões, no começo eu tive um pouco de dificuldade pra entender, porque nunca tinha mexido com Dataform, então ainda tava me situando. Aí entrei em call com o Brizola, e ele começou a me ajudar ali do zero, já iniciando uma parte da demanda comigo, então tá me dando uma baita força.
+
+E se der tudo certo, hoje a gente deve continuar nisso pra eu conseguir seguir com a demanda
+
  
 
 
