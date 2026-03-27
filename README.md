@@ -120,6 +120,7 @@ Depois disso, tivemos que fazer alguns ajustes ali de permissões, no começo eu
 
 E se der tudo certo, hoje a gente deve continuar nisso pra eu conseguir seguir com a demanda 
 
+
 ## 24/03/2026
 Hoje, segui na demanda de migrar a View para o Dataform. Comecei em call com o Brizola para dar continuidade à ajuda que ele estava me dando e, depois disso, consegui avançar sozinha na estruturação do código.
 
