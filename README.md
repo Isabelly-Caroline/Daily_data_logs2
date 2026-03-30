@@ -141,6 +141,14 @@ Tínhamos uma dúvida sobre o conflito de nomes, já que a tabela estava substit
 
 Com isso, já dei início à próxima demanda, que é a view dominio_status. Estou estudando a melhor lógica para o particionamento dela; agora que compreendo melhor o processo, quero tentar estruturar essa parte sozinha antes de pedir uma revisão.
 
+## 30/03/2026
+
+Ontem participei do treinamento geral e, na sequência, realizei os KTs com o Brizola e o Lucas sobre o processo_log e a estrutura do Dataform, o que me ajudou a alinhar melhor esses processos.
+
+Depois disso, dei continuidade no desenvolvimento da tabela viw_dominio_status. Para isso, utilizei a lógica de particionamento por num_anomes_prod, seguindo o mesmo padrão da v_cota_produt_financeiro.
+
+Além do particionamento mensal, implementei também o CLUSTER BY st_id_status, por ser o principal campo de identificação da tabela. A ideia é otimizar a performance das consultas, já que os dados ficam organizados por esse ID dentro de cada partição mensal, tornando os filtros por status mais rápidos e eficientes.
+
  
 
 
